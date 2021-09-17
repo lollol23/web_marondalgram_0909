@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.hagulu.marondalgram.common.EncryptUtils;
 import com.hagulu.marondalgram.user.dao.UserDAO;
+import com.hagulu.marondalgram.user.model.User;
 
 @Service
 public class UserBO {
@@ -36,4 +37,13 @@ public class UserBO {
 		
 		// return (userDAO.selectCountById(loginId) != 0);
 	}
+	
+	public User signIn(String loginId, String password) {
+		// 비밀번호를 암호화 하고 DAO 로 전달한다. 
+		String encryptPassword = EncryptUtils.md5(password);
+		
+		return userDAO.selectUserByIdPassword(loginId, encryptPassword);
+	}
+	
+	
 }

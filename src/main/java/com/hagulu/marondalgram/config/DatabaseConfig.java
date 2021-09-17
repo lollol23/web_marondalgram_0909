@@ -1,4 +1,4 @@
-package com.hagulu.marondalgram;
+package com.hagulu.marondalgram.config;
 
 import javax.sql.DataSource;
 
