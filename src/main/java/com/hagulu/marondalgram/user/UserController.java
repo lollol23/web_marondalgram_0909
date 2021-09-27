@@ -20,4 +20,16 @@ public class UserController {
 	public String signUpView() {
 		return "user/signUp";
 	}
+	
+	@GetMapping("/sign_out")
+	public String signOut(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		
+		session.removeAttribute("userId");
+		session.removeAttribute("userLoginId");
+		session.removeAttribute("userName");
+		
+		return "redirect:/user/signin_view";
+	}
+
 }

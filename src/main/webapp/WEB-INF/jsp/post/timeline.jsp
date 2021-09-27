@@ -34,6 +34,80 @@
 						<button class="btn btn-sm btn-info" id="uploadBtn">업로드</button>
 					</div>
 				</div>
+				
+				<!-- 피드 -->
+				<c:forEach var="post" items="${postList }">
+				<div class="card border rounded mt-3">
+					<!-- 타이틀 -->
+					<div class="d-flex justify-content-between p-2 border-bottom">
+						<div>
+							<img src="https://mblogthumb-phinf.pstatic.net/20150203_225/hkjwow_1422965971196EfkMV_JPEG/%C4%AB%C5%E5%C7%C1%BB%E7_31.jpg?type=w210" width="30">
+							${post.userName }
+						</div>
+						
+						<div class="more-icon" >
+							<a class="text-dark moreBtn" href="#"> 
+								<i class="bi bi-three-dots-vertical"></i> 
+							</a>
+						</div>
+						
+					</div>
+					<!--이미지 -->
+					<div>
+						<img src="${post.imagePath }" class="w-100 imageClick">
+					</div>
+					<!-- 좋아요 -->
+					
+					<div class="m-2">
+						<a href="#" class="likeBtn">
+					
+							<i class="bi bi-heart heart-icon text-dark"></i>	
+					
+						</a>
+						<span class="middle-size ml-1"> 좋아요 11개 </span>
+					</div>
+					
+					<!--  content -->
+					<div class="middle-size m-2">
+						<b>${post.userName }</b> ${post.content }
+					</div>
+					
+					<!--  댓글 -->
+					
+					<div class="mt-2">
+						<div class=" border-bottom m-2">
+							<!-- 댓글 타이틀 -->
+							<div  class="middle-size">
+								댓글
+							</div>
+						</div>
+						
+						<!--  댓글  -->
+						<div class="middle-size m-2">
+						
+							<div class="mt-1">
+								<b>바다</b> 혼자 좋은데 다니네
+							</div>
+							<div class="mt-1">
+								<b>하하</b> 좋아요!
+							</div>
+						
+						</div>
+						
+						
+						<!-- 댓글 입력 -->
+						<div class="d-flex mt-2 border-top">
+							<input type="text" class="form-control border-0 " id="commentInput-${post.id }">
+							<button class="btn btn-info ml-2 commentBtn" data-post-id="${post.id }">게시</button>
+						</div>
+						
+					
+					</div>
+			
+				</div>
+								
+				<!-- /피드 -->
+				</c:forEach>
 			</div>	
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
@@ -85,6 +159,36 @@
 				});
 				
 			});	
+			
+			$(".commentBtn").on("click", function() {
+				var postId = $(this).data("post-id");
+				// postId, content
+				
+				// 대응되는 input의 value
+				// ex ) postId = 5;
+				// "#commentInput-5"
+				var content = $("#commentInput-" + postId).val();
+				
+				$.ajax({
+					type:"post",
+					url:"/post/comment/create",
+					data:{"postId":postId, "content":content},
+					success:function(data) {
+						if(data.result == "success") {
+							alert("댓글 작성 성공");	
+						} else {
+							alert("댓글 작성 실패");
+						}
+						
+					},
+					error:function(e) {
+						alert("error");
+					}
+					
+				});
+				
+				
+			});
 		});		
 	
 	
