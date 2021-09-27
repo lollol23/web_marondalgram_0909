@@ -36,13 +36,13 @@
 				</div>
 				
 				<!-- 피드 -->
-				<c:forEach var="post" items="${postList }">
+				<c:forEach var="postDetail" items="${postList }">
 				<div class="card border rounded mt-3">
 					<!-- 타이틀 -->
 					<div class="d-flex justify-content-between p-2 border-bottom">
 						<div>
 							<img src="https://mblogthumb-phinf.pstatic.net/20150203_225/hkjwow_1422965971196EfkMV_JPEG/%C4%AB%C5%E5%C7%C1%BB%E7_31.jpg?type=w210" width="30">
-							${post.userName }
+							${postDetail.post.userName }
 						</div>
 						
 						<div class="more-icon" >
@@ -54,7 +54,7 @@
 					</div>
 					<!--이미지 -->
 					<div>
-						<img src="${post.imagePath }" class="w-100 imageClick">
+						<img src="${postDetail.post.imagePath }" class="w-100 imageClick">
 					</div>
 					<!-- 좋아요 -->
 					
@@ -69,7 +69,7 @@
 					
 					<!--  content -->
 					<div class="middle-size m-2">
-						<b>${post.userName }</b> ${post.content }
+						<b>${postDetail.post.userName }</b> ${postDetail.post.content }
 					</div>
 					
 					<!--  댓글 -->
@@ -97,8 +97,8 @@
 						
 						<!-- 댓글 입력 -->
 						<div class="d-flex mt-2 border-top">
-							<input type="text" class="form-control border-0 " id="commentInput-${post.id }">
-							<button class="btn btn-info ml-2 commentBtn" data-post-id="${post.id }">게시</button>
+							<input type="text" class="form-control border-0 " id="commentInput-${postDetail.post.id }">
+							<button class="btn btn-info ml-2 commentBtn" data-post-id="${postDetail.post.id }">게시</button>
 						</div>
 						
 					
