@@ -59,12 +59,21 @@
 					<!-- 좋아요 -->
 					
 					<div class="m-2">
-						<a href="#" class="likeBtn">
-					
-							<i class="bi bi-heart heart-icon text-dark"></i>	
-					
-						</a>
-						<span class="middle-size ml-1"> 좋아요 11개 </span>
+						<c:choose>
+							<c:when test="${postDetail.like }">
+								<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }" >
+									<i class="bi bi-heart-fill heart-icon text-danger"></i>
+								</a>
+							</c:when>
+							<c:otherwise>
+								<a href="#" class="likeBtn" data-post-id="${postDetail.post.id }" >
+									<i class="bi bi-heart heart-icon text-dark"></i>		
+								</a>
+							</c:otherwise>
+						</c:choose>
+								
+
+						<span class="middle-size ml-1"> 좋아요 ${postDetail.likeCount }개 </span>
 					</div>
 					
 					<!--  content -->
@@ -85,12 +94,12 @@
 						<!--  댓글  -->
 						<div class="middle-size m-2">
 						
+							<!-- postDetail > commentList  -->
+							<c:forEach var="comment" items="${postDetail.commentList }">
 							<div class="mt-1">
-								<b>바다</b> 혼자 좋은데 다니네
+								<b>${comment.userName }</b> ${comment.content }
 							</div>
-							<div class="mt-1">
-								<b>하하</b> 좋아요!
-							</div>
+							</c:forEach>
 						
 						</div>
 						
@@ -175,7 +184,7 @@
 					data:{"postId":postId, "content":content},
 					success:function(data) {
 						if(data.result == "success") {
-							alert("댓글 작성 성공");	
+							location.reload();
 						} else {
 							alert("댓글 작성 실패");
 						}
@@ -189,6 +198,56 @@
 				
 				
 			});
+	
+			$(".likeBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				var postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/like",
+					data:{"postId":postId},
+					success: function(data) {
+						
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("좋아요 실패");
+						}
+					},
+					error: function(e) {
+						alert("error");
+					}
+					
+				});
+			});
+			/*
+			$(".unLikeBtn").on("click", function(e) {
+				e.preventDefault();
+				
+				var postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/unlike",
+					data:{"postId":postId},
+					success: function(data) {
+						
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("좋아요 취소 실패");
+						}
+					},
+					error: function(e) {
+						alert("error");
+					}
+					
+				});
+				
+			});
+			*/
 		});		
 	
 	
