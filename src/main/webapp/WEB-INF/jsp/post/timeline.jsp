@@ -45,11 +45,14 @@
 							${postDetail.post.userName }
 						</div>
 						
+						
+						<c:if test="${postDetail.post.userId eq userId }">
 						<div class="more-icon" >
 							<a class="text-dark moreBtn" href="#" data-post-id="${postDetail.post.id }" data-toggle="modal" data-target="#deleteModal"> 
 								<i class="bi bi-three-dots-vertical"></i> 
 							</a>
 						</div>
+						</c:if>
 						
 					</div>
 					<!--이미지 -->
@@ -272,7 +275,24 @@
 			
 			$("#deleteBtn").on("click", function(e) {
 				e.preventDefault();
-				alert($(this).data("post-id"));
+				var postId = $(this).data("post-id");
+				
+				$.ajax({
+					type:"get",
+					url:"/post/delete",
+					data:{"postId":postId},
+					success:function(data) {
+						if(data.result == "success") {
+							location.reload();
+						} else {
+							alert("삭제 실패");
+						}
+					}, 
+					error:function(e) {
+						alert("error");
+					}
+					
+				});
 			});
 			
 		});		

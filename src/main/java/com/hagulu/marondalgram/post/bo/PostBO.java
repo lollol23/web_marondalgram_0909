@@ -66,4 +66,24 @@ public class PostBO {
 		
 		return postDetailList;
 	}
+	
+	public boolean deletePost(int id, int userId) {
+
+		Post post = postDAO.selectPost(id);
+		
+		int count = postDAO.deletePost(id, userId);
+		
+		if(count != 1) {
+			return false;
+		}
+		
+		FileManagerService fileManagerService = new FileManagerService();
+		fileManagerService.removeFile(post.getImagePath());
+		
+		// 댓글 삭제 
+		commentBO.deleteCommentByPostId(id);
+		likeBO.deleteLikeByPostId(id);
+		
+		return true;
+	}
 }

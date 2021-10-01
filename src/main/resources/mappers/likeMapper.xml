@@ -49,4 +49,13 @@
 			`postId` = #{postId}
 	</select>
 	
+	<delete id="deleteLikeByPostId" parameterType="int">
+		DELETE
+		FROM
+			`like`
+		WHERE
+			`postId` = #{postId}
+	
+	</delete>
+	
 </mapper>
