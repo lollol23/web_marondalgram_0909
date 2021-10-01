@@ -46,7 +46,7 @@
 						</div>
 						
 						<div class="more-icon" >
-							<a class="text-dark moreBtn" href="#"> 
+							<a class="text-dark moreBtn" href="#" data-post-id="${postDetail.post.id }" data-toggle="modal" data-target="#deleteModal"> 
 								<i class="bi bi-three-dots-vertical"></i> 
 							</a>
 						</div>
@@ -120,6 +120,20 @@
 			</div>	
 		</section>
 		<c:import url="/WEB-INF/jsp/include/footer.jsp" />
+	</div>
+	
+	
+	<!-- Modal -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered" role="document">
+	    <div class="modal-content">
+	      
+	      <div class="modal-body text-center">
+	        <a href="#" id="deleteBtn">삭제하기</a>
+	      </div>
+	      
+	    </div>
+	  </div>
 	</div>
 	
 	<script>
@@ -248,6 +262,19 @@
 				
 			});
 			*/
+			
+			$(".moreBtn").on("click", function(e) {
+				e.preventDefault();
+				var postId = $(this).data("post-id");
+				// <a href="#" id="deleteBtn" data-post-id=""></a>
+				$("#deleteBtn").data("post-id", postId);
+			});
+			
+			$("#deleteBtn").on("click", function(e) {
+				e.preventDefault();
+				alert($(this).data("post-id"));
+			});
+			
 		});		
 	
 	
