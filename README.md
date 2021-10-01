@@ -31,16 +31,16 @@
    * view : [/webapp/WEB-INF/jsp/user/*](https://github.com/dulumary/spring_marondalgram_0817/tree/develop/src/main/webapp/WEB-INF/jsp/user)
  * 로그인
    * package : [com.hagulu.marondalgram.user.*](https://github.com/dulumary/web_marondalgram_0909/tree/develop/src/main/java/com/hagulu/marondalgram/user)
-   * view : [/webapp/WEB-INF/jsp/user/*](https://github.com/dulumary/spring_marondalgram_0817/tree/develop/src/main/webapp/WEB-INF/jsp/user)
+   * view : [/webapp/WEB-INF/jsp/user/*](https://github.com/dulumary/web_marondalgram_0909/tree/develop/src/main/webapp/WEB-INF/jsp/user)
  * 이미지 첨부 글쓰기
    * package : [com.hagulu.marondalgram.post.*](https://github.com/dulumary/web_marondalgram_0909/tree/develop/src/main/java/com/hagulu/marondalgram/post)
-   * view : [/webapp/WEB-INF/jsp/post/*](https://github.com/dulumary/spring_marondalgram_0817/tree/develop/src/main/webapp/WEB-INF/jsp/post)
+   * view : [/webapp/WEB-INF/jsp/post/*](https://github.com/dulumary/web_marondalgram_0909/tree/develop/src/main/webapp/WEB-INF/jsp/post)
  * 댓글 
    * package : [com.hagulu.marondalgram.post.comment.*](https://github.com/dulumary/web_marondalgram_0909/tree/develop/src/main/java/com/hagulu/marondalgram/post/comment)
-   * view : [/webapp/WEB-INF/jsp/post/*](https://github.com/dulumary/spring_marondalgram_0817/tree/develop/src/main/webapp/WEB-INF/jsp/post)
+   * view : [/webapp/WEB-INF/jsp/post/*](https://github.com/dulumary/web_marondalgram_0909/tree/develop/src/main/webapp/WEB-INF/jsp/post)
  * 좋아요
    * package : [com.hagulu.marondalgram.post.like.*](https://github.com/dulumary/web_marondalgram_0909/tree/develop/src/main/java/com/hagulu/marondalgram/post/*)
-   * view : [/webapp/WEB-INF/jsp/post/*](https://github.com/dulumary/spring_marondalgram_0817/tree/develop/src/main/webapp/WEB-INF/jsp/post)
+   * view : [/webapp/WEB-INF/jsp/post/*](https://github.com/dulumary/web_marondalgram_0909/tree/develop/src/main/webapp/WEB-INF/jsp/post)
 
 ### 🎆 데모 🎆
 
